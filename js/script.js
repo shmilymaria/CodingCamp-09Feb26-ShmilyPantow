@@ -1,18 +1,25 @@
-welcomeMessage();
+window.onload = () => {
+  let name = localStorage.getItem("visitorName");
 
-// Welcome Message Function
-function welcomeMessage() {
-    // Show Popup
-    let name = prompt("Welcome to Yama Company! What is your name?");
+  if (!name) {
+    name = prompt("Please enter your name:");
+    if (name) localStorage.setItem("visitorName", name);
+  }
 
-    // validate input
-    if (name == null || name.trim() === "") {
-        // If user cancels or enters an empty name, use "Guest" as default
-        name = "Guest";
-    }
+  document.getElementById("welcomeText").textContent =
+    name ? `Hi ${name}, Welcome!` : "Hi there, Welcome!";
+};
 
-    // Display Welcome Message
-    document.getElementById('welcome-speech').innerHTML = `Hello, ${name}! Welcome to Yama Company.`;
+function scrollToSection(id) {
+  document.getElementById(id).scrollIntoView({ behavior: "smooth" });
 }
 
-function validateForm() { }
+document.getElementById("contactForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const name = document.getElementById("name").value;
+  const status = document.getElementById("formStatus");
+
+  status.textContent = `Thank you, ${name}! Your message has been sent 🚀`;
+  status.style.color = "green";
+  e.target.reset();
+});
