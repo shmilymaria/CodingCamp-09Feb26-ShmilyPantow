@@ -59,6 +59,53 @@ body {
   color: #ff7a18;
 }
 
+/* HAMBURGER */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger span {
+  height: 3px;
+  width: 25px;
+  background: white;
+  margin: 4px 0;
+  border-radius: 3px;
+}
+
+/* MOBILE NAV */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  nav {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: #0a2540;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  nav.active {
+    max-height: 300px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    padding: 20px;
+    gap: 15px;
+  }
+
+  .nav-links a {
+    font-size: 18px;
+  }
+}
+
 /* HERO */
 .hero {
   min-height: 100vh;
@@ -231,5 +278,21 @@ footer {
 
   .hero-text h1 {
     font-size: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 80px;
+  }
+
+  .hero-image img {
+    width: 200px;
+  }
+
+  .profile-section,
+  .portfolio-section,
+  .contact-section {
+    padding: 60px 20px;
   }
 }

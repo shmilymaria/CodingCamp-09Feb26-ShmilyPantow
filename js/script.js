@@ -23,3 +23,17 @@ document.getElementById("contactForm").addEventListener("submit", e => {
   status.style.color = "green";
   e.target.reset();
 });
+
+const hamburger = document.getElementById("hamburger");
+const navMenu = document.getElementById("navMenu");
+
+hamburger.addEventListener("click", () => {
+  navMenu.classList.toggle("active");
+});
+
+// auto close menu when clicking link (mobile UX)
+document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", () => {
+    navMenu.classList.remove("active");
+  });
+});
